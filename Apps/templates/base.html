@@ -1,0 +1,94 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;1,200&display=swap" rel="stylesheet">
+  <title>{% block title %}Call Of Corporation{% endblock title %}</title>
+</head>
+
+<body class="body-color">
+  <nav class="navbar navbar-expand-lg navbar-color navbar-dark">
+    <div class="container py-2">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        Call Of Corporation
+      </a>
+      <button class="navbar-toggler border-0"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'news_list' %}">
+              Новости
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper"
+                viewBox="0 0 16 16">
+                <path
+                  d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
+                <path
+                  d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop_list' %}">
+              Магазин
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+         {% if user.is_authenticated %}
+        <div class="dropdown-center">
+                    <a
+                    class="nav-link dropdown-toggle d-flex align-items-center hidden-arrow"
+                    href="#"
+                    id="dropdownMenuLink"
+                    role="button"
+                    data-mdb-toggle="dropdown"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="/{{ user.image }}"
+                      class="rounded-circle"
+                      height="50"
+                      id="navbarDropdown"
+                    </img>
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'profile' pk=user.pk %}">Аккаунт</a></li>
+                    <li><a class="dropdown-item" href="{% url 'password_change' %}">Сменить пароль</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Выйти из аккаунта</a></li>
+                  </ul>
+                </div>
+          {% else %}
+          <a class="btn btn-outline-success" href="{% url 'login' %}" >Авторизация</a>
+          <a class="btn btn-outline-light ms-2"  href="{% url 'signup' %}">Регистрация</a>
+      {% endif %}
+      </div>
+
+    </div>
+  </nav>
+  <!-- Content -->
+      {% block content %}
+      {% endblock content %}
+  <!-- end content -->
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+</body>
+<div class="container">
+  <footer class="footer mt-auto py-3">
+    <p class="text-center text-muted">Copyright © 2022. All rights reserved</p>
+  </footer>
+</div>
+</html>

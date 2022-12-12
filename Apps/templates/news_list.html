@@ -1,0 +1,31 @@
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block title %}News{% endblock %}
+
+    {% block content %}
+    <div class="container jumbo-trone text-white p-5">
+    {% if user.is_authenticated and user.is_superuser %}
+    <a href="{% url 'news_new' %}">+News</a>
+    {% endif %}
+        <form action="{% url 'search_results' %}" method="GET">
+            <input name="q" type="text" class="search-input" placeholder="Поиск">
+        </form>
+            {% for news in object_list %}
+        <div class="d-flex flex-column-reverse ">
+                    <div class="card jumbo-trone m-5" style="width: auto;">
+                      <img src="/{{news.image_news}}" class="card-img-top image" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ news.title }} </h5>
+                          <h5 class="card-title"> {{ news.date }}</h5>
+                        <p class="card-text">{{ news.body }}</p>
+                        <a href="{% url 'news_detail' news.pk %}" class="btn btn-primary">Go somewhere</a>
+                          {% if user.is_authenticated and user.is_superuser %}
+                          <a href="{% url 'news_edit' news.pk %}">Edit</a> |
+                        <a href="{% url 'news_delete' news.pk %}">Delete</a>
+                           {% endif %}
+                      </div>
+                    </div>
+        </div>
+            {% endfor %}
+    </div>
+    {% endblock %}

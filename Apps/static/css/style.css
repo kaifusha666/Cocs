@@ -1,0 +1,66 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css');
+body {
+    font-family: 'Exo 2', sans-serif;
+    background-color: black;
+    font-size: 1.25em;
+}
+.navbar-color{
+    background-color: black;
+}
+.carousel-inner img {
+    height: auto;
+    width: 100%;
+}
+.nav-link{
+    margin-top: 5px;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -18%;
+    width: 75%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+
+.accordion-item, .accordion-button{
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 0.9em;
+}
+.accordion-button:not(.collapsed){
+    color: inherit;
+    background-color: inherit;
+}
+.accordion-button:focus {
+    box-shadow: inherit;
+}
+.accordion-button:not(.collapsed)::after{
+    filter: brightness(0%) invert(70%);
+}
+
+.jumbo-trone{
+    border-radius: 5px;
+    border: solid 1px white;
+}
+
+.card{
+    background-color: black;
+}
+.form-outline{
+    background-color: black;
+}
+
+.search-input{
+    color: white;
+    background-color: black;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+}
+.image{
+    border-bottom: solid 1px white;
+}
