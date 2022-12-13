@@ -5,6 +5,7 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.http import HttpResponseRedirect, HttpResponse
 
 
 from . import models
@@ -17,6 +18,10 @@ class NewsDetailView(LoginRequiredMixin, DetailView):
     model = models.News
     template_name = 'news_detail.html'
     login_url = 'login'
+
+    def post(self, request, pk):
+        models.Comment.objects.create(news=models.News.objects.get(pk=pk),author=request.user, comment=request.POST.get('comment'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 class NewsUpdateView(LoginRequiredMixin, UpdateView):
     model =  models.News
     fields = ['title', 'body','image_news']
@@ -36,16 +41,6 @@ class NewsCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-class CommentCreateView(LoginRequiredMixin, CreateView):
-    model = models.Comment
-    template_name = 'comment_new.html'
-    fields = ['comment']
-    login_url = 'login'
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        form.instance.news = get_object_or_404(models.News)
-        return super().form_valid(form)
-
 
 class SearchResultsView(LoginRequiredMixin, ListView):
     model = models.News

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'pages',
     'news',
     'shops',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

@@ -14,11 +14,20 @@
     {% endif %}
     <div class="card-footer text-center">
         <p>Back to <a href="{% url 'news_list' %}">All news</a>.</p>
-        <p>Комментарии<a href="{% url 'comment' news.pk %}">Оставить комментарий</a></p>
-        <div class="container jumbo-trone text-white text-center py-3 d-flex flex-column-reverse">
+        <div class="container jumbo-trone text-white text-center py-3">
+            <h1>New comment</h1>
+            <form method="post">
+                {% csrf_token %}
+                <textarea class="form-control" cols="50" rows="10" name="comment"></textarea>
+             <button class="btn btn-info ml-2" type="submit">Save</button>
+            </form>
+        </div>
+        <p>Комментарии</p>
+        <div class="container text-white text-start py-2 d-flex flex-column-reverse gap-3">
+
         {% for comment in news.comments.all %}
+        <div class="container jumbo-trone text-white text-start py-2 ">
         <p>
-            <div class="container jumbo-trone text-white text-start py-2">
           <span class="font-weight-bold">{{ comment.author }}&middot {{ comment.date_comment }}</span>
           <p>{{ comment }}</p>
         </p>

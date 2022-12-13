@@ -18,7 +18,17 @@
                   <p>Почта: {{user.email}}</p>
                 </div>
               </div>
-            </div>
-          </div>
+            <p class="text-start">Покупки:</p>
+    <div class="container jumbo-trone text-white p-5">
+            {% for shop in object_list %}
+                {% if shop.user_id == user %}
+                <div class="profile-img"/>
+                <img src="/{{shop.product_id.image_shop}}" style="width: 200px;">
+                </div>
+                <p>{{ shop.product_id.title }}</p>
+                <p>{{ shop.product_id.price }}</p>
+                {% endif %}
+            {% endfor %}
     </div>
+            </div>
     {% endblock %}

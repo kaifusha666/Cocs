@@ -2,8 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
-
-
 class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -17,4 +15,3 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse('profile', args=[str(self.user_id)])
-
