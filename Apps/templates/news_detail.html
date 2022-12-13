@@ -1,5 +1,6 @@
     {% extends 'base.html'%}
     {% load static %}
+    {% load crispy_forms_tags %}
     {% block content %}
     <div class="container jumbo-trone text-white text-center">
     <div class="article-entry">
@@ -11,6 +12,19 @@
     {% if user.is_authenticated and user.is_superuser %}
     <p><a href="{% url 'news_edit' news.pk%}">Edit</a> | <a href="{% url 'news_delete' news.pk%}">Delete</a></p>
     {% endif %}
+    <div class="card-footer text-center">
         <p>Back to <a href="{% url 'news_list' %}">All news</a>.</p>
+        <p>Комментарии<a href="{% url 'comment' news.pk %}">Оставить комментарий</a></p>
+        <div class="container jumbo-trone text-white text-center py-3 d-flex flex-column-reverse">
+        {% for comment in news.comments.all %}
+        <p>
+            <div class="container jumbo-trone text-white text-start py-2">
+          <span class="font-weight-bold">{{ comment.author }}&middot {{ comment.date_comment }}</span>
+          <p>{{ comment }}</p>
+        </p>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
     </div>
     {% endblock content %}

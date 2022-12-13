@@ -14,7 +14,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ shops.title }} </h5>
                         <p class="card-text">{{ shops.price }}</p>
-                        <a href="https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/" class="btn btn-primary">Купить</a>
+                        <a href="{% url 'shop_detail' shops.pk %}" class="btn btn-primary">Купить</a>
                       </div>
                     </div>
             {% endfor %}
