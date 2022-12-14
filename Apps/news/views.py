@@ -10,11 +10,11 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 from . import models
 
-class NewsListView(LoginRequiredMixin, ListView):
+class NewsListView(ListView):
     model = models.News
     template_name = 'news_list.html'
     login_url = 'login'
-class NewsDetailView(LoginRequiredMixin, DetailView):
+class NewsDetailView(DetailView):
     model = models.News
     template_name = 'news_detail.html'
     login_url = 'login'
@@ -42,7 +42,7 @@ class NewsCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class SearchResultsView(LoginRequiredMixin, ListView):
+class SearchResultsView(ListView):
     model = models.News
     template_name = 'search_results.html'
 

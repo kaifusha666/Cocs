@@ -5,11 +5,11 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponse
-class ShopListView(LoginRequiredMixin, ListView):
+class ShopListView(ListView):
     model = models.Shop
     template_name = 'shops_list.html'
     login_url = 'login'
-class ShopDetailView(LoginRequiredMixin, DetailView):
+class ShopDetailView(DetailView):
     model = models.Shop
     template_name = 'shops_detail.html'
     login_url = 'login'
