@@ -4,11 +4,11 @@
 
     {% block content %}
     <div class="container jumbo-trone text-white p-5">
-    <h1>Delete</h1>
+    <h1>Удаление</h1>
     <form action="" method="post">
         {% csrf_token %}
-        <p>Are you sure you want to delete "{{ shops.title }}"?</p>
-        <button class="btn btn-info ml-2" type="submit">Confirm</button>
+        <p>Вы уверены что хотите удалить "{{ shops.title }}"?</p>
+        <button class="btn btn-info ml-2" type="submit">Подтвердить</button>
     </form>
     </div>
     {% endblock content %}

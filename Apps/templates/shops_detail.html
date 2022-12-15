@@ -8,12 +8,12 @@
         <p>{{ object.price }}</p>
     </div>
     {% if user.is_authenticated and user.is_superuser %}
-    <p><a href="{% url 'shop_edit' shop.pk %}">Edit</a> | <a href="{% url 'shop_delete' shop.pk %}">Delete</a></p>
+    <p><a href="{% url 'shop_edit' shop.pk %}">Редактировать</a> | <a href="{% url 'shop_delete' shop.pk %}">Удалить</a></p>
     {% endif %}
         {% if user.is_authenticated %}
         {% for shop in object_list %}
         {% if shop.user_id == user %}
-        <p>Данная версия у вас уже куплена </p>
+        <p>Данная версия продукта у вас уже куплена </p>
         {% else %}
         <form method="post" >
             {% csrf_token %}
@@ -25,6 +25,6 @@
         {% endif %}
         {% endfor %}
         {% endif %}
-        <p>Back to <a href="{% url 'shop_list' %}">Shop</a>.</p>
+        <p>Вернуться <a href="{% url 'shop_list' %}">в магазин</a>.</p>
     </div>
     {% endblock content %}

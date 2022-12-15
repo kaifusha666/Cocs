@@ -6,21 +6,21 @@
     <div class="article-entry">
         <img src="/{{object.image_news}}" width="300em">
         <h2>{{ object.title }}</h2>
-        <p>by {{ object.author }} | {{ object.date }}</p>
+        <p>создана: {{ object.author }} | {{ object.date }}</p>
         <p>{{ object.body }}</p>
     </div>
     {% if user.is_authenticated and user.is_superuser %}
-    <p><a href="{% url 'news_edit' news.pk%}">Edit</a> | <a href="{% url 'news_delete' news.pk%}">Delete</a></p>
+    <p><a href="{% url 'news_edit' news.pk%}">Редактирование</a> | <a href="{% url 'news_delete' news.pk%}">Удаление</a></p>
     {% endif %}
     <div class="card-footer text-center">
-        <p>Back to <a href="{% url 'news_list' %}">All news</a>.</p>
+        <p>Вернуться <a href="{% url 'news_list' %}">назад</a>.</p>
         {% if user.is_authenticated %}
         <div class="container jumbo-trone text-white text-center py-3">
-            <h1>New comment</h1>
+            <h1>Новый комментарий</h1>
             <form method="post">
                 {% csrf_token %}
                 <textarea class="form-control" cols="50" rows="10" name="comment"></textarea>
-             <button class="btn btn-info ml-2" type="submit">Save</button>
+             <button class="btn btn-info m-2" type="submit">Сохранить</button>
             </form>
         </div>
         {% else %}

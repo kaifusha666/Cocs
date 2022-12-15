@@ -1,11 +1,11 @@
     {% extends 'base.html' %}
     {% load static %}
-    {% block title %}News{% endblock %}
+    {% block title %}Новости{% endblock %}
 
     {% block content %}
     <div class="container jumbo-trone text-white p-5">
     {% if user.is_authenticated and user.is_superuser %}
-    <a href="{% url 'news_new' %}">+News</a>
+    <a href="{% url 'news_new' %}">Добавить новость</a>
     {% endif %}
         <form action="{% url 'search_results' %}" method="GET">
             <input name="q" type="text" class="search-input" placeholder="Поиск">
@@ -18,10 +18,10 @@
                         <h5 class="card-title">{{ news.title }} </h5>
                           <h5 class="card-title"> {{ news.date }}</h5>
                         <p class="card-text">{{ news.body }}</p>
-                        <a href="{% url 'news_detail' news.pk %}" class="btn btn-primary">Go somewhere</a>
+                        <a href="{% url 'news_detail' news.pk %}" class="btn btn-primary">Подробнее</a>
                           {% if user.is_authenticated and user.is_superuser %}
-                          <a href="{% url 'news_edit' news.pk %}">Edit</a> |
-                        <a href="{% url 'news_delete' news.pk %}">Delete</a>
+                          <a href="{% url 'news_edit' news.pk %}">Редактировать</a> |
+                        <a href="{% url 'news_delete' news.pk %}">Удалить</a>
                            {% endif %}
                       </div>
                     </div>

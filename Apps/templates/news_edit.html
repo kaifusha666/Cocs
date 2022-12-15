@@ -2,11 +2,11 @@
     {% load static %}
     {% block content %}
     <div class="container jumbo-trone text-white text-center">
-    <h1>Edit</h1>
+    <h1>Редактирование</h1>
     <form enctype="multipart/form-data" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-info ml-2" type="submit">Update</button>
+        <button class="btn btn-info ml-2" type="submit">Обновить</button>
     </form>
     </div>
     {% endblock %}
