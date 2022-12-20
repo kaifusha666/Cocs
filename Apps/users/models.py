@@ -3,8 +3,6 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 class CustomUser(AbstractUser):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
     email = models.EmailField()
     image = models.ImageField(upload_to='static/img/', default='static/img/avatar.png')
 

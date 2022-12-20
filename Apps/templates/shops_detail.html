@@ -10,21 +10,13 @@
     {% if user.is_authenticated and user.is_superuser %}
     <p><a href="{% url 'shop_edit' shop.pk %}">Редактировать</a> | <a href="{% url 'shop_delete' shop.pk %}">Удалить</a></p>
     {% endif %}
-        {% if user.is_authenticated %}
-        {% for shop in object_list %}
-        {% if shop.user_id == user %}
-        <p>Данная версия продукта у вас уже куплена </p>
-        {% else %}
-        <form method="post" >
+        <form method="post">
             {% csrf_token %}
             <input name="title" value="{{ object.title }}" style="width: 0; height: 0; visibility: hidden;">
             <button>
             Купить
         </button>
         </form>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
         <p>Вернуться <a href="{% url 'shop_list' %}">в магазин</a>.</p>
     </div>
     {% endblock content %}

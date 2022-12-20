@@ -9,6 +9,7 @@
             <input type="search" class="search-input" placeholder="Поиск">
         </form>
         </div>
+            {% if news in object_list %}
             {% for news in object_list %}
                     <div class="card jumbo-trone m-5" style="width: auto;">
                       <img src="/{{news.image_news}}" class="card-img-top image" alt="...">
@@ -19,5 +20,8 @@
                       </div>
                     </div>
             {% endfor %}
+        {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+        {% endif %}
     </div>
     {% endblock %}

@@ -6,7 +6,7 @@
 
     <div class="container jumbo-trone text-white p-5">
             {% if user.is_authenticated and user.is_superuser %}
-    <a href="{% url 'shop_new' %}">+Product</a>
+    <a href="{% url 'shop_new' %}">Добавить продукт</a>
     {% endif %}
             {% for shops in object_list %}
                     <div class="card jumbo-trone m-5" style="width: auto;">
@@ -14,7 +14,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ shops.title }} </h5>
                         <p class="card-text">{{ shops.price }}</p>
-                        <a href="{% url 'shop_detail' shops.pk %}" class="btn btn-primary">Купить</a>
+                        <a href="{% url 'shop_detail' shops.pk %}" class="btn btn-primary">Подробнее о продукте</a>
                       </div>
                     </div>
             {% endfor %}

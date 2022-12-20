@@ -19,7 +19,7 @@
             <h1>Новый комментарий</h1>
             <form method="post">
                 {% csrf_token %}
-                <textarea class="form-control" cols="50" rows="10" name="comment"></textarea>
+                <textarea required class="form-control forms_class text_area_forms_class" cols="50" rows="10" name="comment"></textarea>
              <button class="btn btn-info m-2" type="submit">Сохранить</button>
             </form>
         </div>

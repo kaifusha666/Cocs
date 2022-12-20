@@ -64,3 +64,22 @@ body {
 .image{
     border-bottom: solid 1px white;
 }
+
+.forms_class{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: white;
+    border-radius: 0;
+    box-shadow: none;
+}
+.form-control:focus {
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 1px solid #fff;
+    color: white;
+    outline: 0;
+}
+.text_area_forms_class{
+    border: 1px solid #fff;
+}

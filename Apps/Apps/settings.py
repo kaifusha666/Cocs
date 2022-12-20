@@ -136,3 +136,13 @@ LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 TIME_ZONE = 'Asia/Yekaterinburg'
+
+CRISPY_CLASS_CONVERTERS = {
+    'textinput': "form-control forms_class",
+    'urlinput': "form-control forms_class",
+    'numberinput': "form-control forms_class",
+    'emailinput': "form-control forms_class",
+    'dateinput': "form-control forms_class",
+    'textarea': "form-control forms_class text_area_forms_class",
+    'passwordinput': "form-control forms_class",
+}
